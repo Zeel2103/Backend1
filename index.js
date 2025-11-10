@@ -19,7 +19,11 @@ app.use('/images', express.static('images'));
 const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri, {
-  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true }
+  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true },
+  tls: true,
+  tlsAllowInvalidCertificates: false,
+  retryWrites: true,
+  retryReads: true
 });
 
 //const client = new MongoClient(process.env.MONGODB_URI);
