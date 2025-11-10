@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const app = express();
 app.use(cors());
@@ -16,7 +16,11 @@ app.use((req, res, next) => {
 
 app.use('/images', express.static('images'));
 
-const client = new MongoClient(process.env.MONGODB_URI);
+const uri = process.env.MONGODB_URI;
+
+const client = new MongoClient(uri, {
+  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true }
+});
 
 // Connect to MongoDB and start server
 async function startServer() {
