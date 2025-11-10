@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Logger middleware
 app.use((req, res, next) => {
-    console.log(`${req.method} ${req.Url}`);
+    console.log(`${req.method} ${req.url}`);
     next();
 });
 
@@ -21,6 +21,9 @@ const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
   serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true }
 });
+
+//const client = new MongoClient(process.env.MONGODB_URI);
+
 
 // Connect to MongoDB and start server
 async function startServer() {
@@ -40,8 +43,8 @@ async function startServer() {
         app.get('/lessons', async (req, res) => {
             try {
                 // Read query parameters from the URL (e.g., ?sortBy=price&order=asc)
-                const sortBy = req.query.sortBy || 'subject'     // default field
-                const order = req.query.order === 'desc' ? -1 : 1 // 1 = ascending, -1 = descending
+                const sortBy = req.query.sortBy || 'subject';     // default field
+                const order = req.query.order === 'desc' ? -1 : 1; // 1 = ascending, -1 = descending
 
                 console.log(`Sorting by ${sortBy} (${order === 1 ? 'asc' : 'desc'})`)
 
