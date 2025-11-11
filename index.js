@@ -43,17 +43,6 @@ async function startServer() {
         console.log('Lessons fetched from database:');
         console.log(lessons);
 
-        app.get('/lessons', async (req, res) => {
-            try {
-                const lessons = await lessonsCol.find({}).toArray();
-                res.json(lessons);
-            } catch (error) {
-                console.error('Error fetching lessons:', error);
-                res.status(500).json({ error: 'Failed to fetch lessons' });
-            }
-        });
-
-
 
         app.get('/lessons', async (req, res) => {
             try {
