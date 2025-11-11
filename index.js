@@ -4,7 +4,10 @@ import 'dotenv/config';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
 app.use(express.json());
 
 
@@ -19,7 +22,7 @@ app.use('/images', express.static('images'));
 const uri = process.env.MONGODB_URI;
 
 const client = new MongoClient(uri, {
-  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true }
+    serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true }
 });
 
 //const client = new MongoClient(process.env.MONGODB_URI);
@@ -39,6 +42,18 @@ async function startServer() {
         const lessons = await lessonsCol.find({}).toArray();
         console.log('Lessons fetched from database:');
         console.log(lessons);
+
+        app.get('/lessons', async (req, res) => {
+            try {
+                const lessons = await lessonsCol.find({}).toArray();
+                res.json(lessons);
+            } catch (error) {
+                console.error('Error fetching lessons:', error);
+                res.status(500).json({ error: 'Failed to fetch lessons' });
+            }
+        });
+
+
 
         app.get('/lessons', async (req, res) => {
             try {
