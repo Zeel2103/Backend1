@@ -13,7 +13,7 @@ app.use(express.json());
 
 // Logger middleware
 app.use((req, res, next) => {
-    console.log(`${req.method} ${req.url}`);
+    console.log(`${req.method} ${res.statusCode} ${req.url}`);
     next();
 });
 
@@ -64,6 +64,46 @@ async function startServer() {
                 res.status(500).json({ error: 'Failed to fetch lessons' })
             }
         })
+
+
+        // Lessons search endpoint
+        app.get('/lessons/search', async (req, res) => {
+            try {
+                const searchQuery = req.query.query; // Extract the search term
+
+                console.log("Search Query:", searchQuery);
+
+                // Validate search query
+                if (!searchQuery || searchQuery.trim() === "") {
+                    return res.status(400).send({ error: true, message: "Search term is required." });
+                }
+
+                const searchTerm = searchQuery.trim();
+
+                // Search across multiple fields in lessons
+                const matchingLessons = await lessonsCol.find({
+                    $or: [
+                        { Subject: { $regex: searchTerm, $options: "i" } }, // Search in Subject field
+                        { Location: { $regex: searchTerm, $options: "i" } }, // Search in Location field  
+                        { Description: { $regex: searchTerm, $options: "i" } }, // Search in Description field
+                    ]
+                }).toArray();
+
+                console.log("Matching Lessons:", matchingLessons);
+
+                // If no lessons match or found return error
+                if (matchingLessons.length === 0) {
+                    return res.status(404).send({ error: true, message: "No matching lessons found." });
+                }
+
+                // Return the matching lessons
+                res.send(matchingLessons);
+
+            } catch (error) {
+                console.error('Search error:', error);
+                res.status(500).send({ error: true, message: "Internal server error during search." });
+            }
+        });
 
 
         const PORT = process.env.PORT || 3000;
