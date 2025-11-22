@@ -37,6 +37,7 @@ async function startServer() {
 
         const db = client.db('Store');
         const lessonsCol = db.collection('lessons');
+        const ordersCollection = db.collection('orders');
 
         // Fetch and display all lessons
         const lessons = await lessonsCol.find({}).toArray();
@@ -105,6 +106,47 @@ async function startServer() {
             }
         });
 
+        // POST and save orders
+        app.post('/orders', async (req, res) => {
+            try {
+                // Destructure expected fields from the body
+                const { name, phone, email, address, items } = req.body
+
+                // Validate that ALL fields are required
+                if (!name || !phone || !email || !address || !Array.isArray(items) || items.length === 0) {
+                    return res.status(400).json({
+                        success: false,
+                        message: 'All fields are required and at least one item.'
+                    })
+                }
+
+                // Create order document object with all required fields
+                const orderDoc = {
+                    name,
+                    phone,
+                    email,
+                    address,
+                    items,              // Array of order items: [{ lessonId, quantity }]
+                    createdAt: new Date()
+                }
+
+                // Insert the order document into the MongoDB collection
+                const result = await ordersCollection.insertOne(orderDoc)
+
+                // Return success response with the generated order ID
+                res.status(201).json({
+                    success: true,
+                    orderId: result.insertedId
+                })
+            } catch (err) {
+                // Log the error
+                console.error('POST /orders error:', err)
+                res.status(500).json({
+                    success: false,
+                    message: 'Failed to save order.'
+                })
+            }
+        })
 
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {
