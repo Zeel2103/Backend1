@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 import { MongoClient, ServerApiVersion } from 'mongodb';
+import { ObjectId } from 'mongodb';
 
 const app = express();
 app.use(cors({
@@ -149,6 +150,45 @@ async function startServer() {
                 })
             }
         })
+
+        app.put('/lessons/:id', async (req, res) => {
+            try {
+                const lessonId = req.params.id
+
+           
+                const updates = req.body
+
+                
+                const filter = { _id: new ObjectId(lessonId) }
+
+                
+                const updateDoc = { $set: updates }
+
+                const result = await lessonsCol.updateOne(filter, updateDoc)
+
+                if (result.matchedCount === 0) {
+                    return res.status(404).json({
+                        success: false,
+                        message: 'Lesson not found'
+                    })
+                }
+
+                res.json({
+                    success: true,
+                    message: 'Lesson updated successfully',
+                    modifiedCount: result.modifiedCount
+                })
+
+            } catch (err) {
+                console.error('PUT /lessons/:id error:', err)
+                res.status(500).json({
+                    success: false,
+                    message: 'Failed to update lesson'
+                })
+            }
+        })
+
+
 
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {
