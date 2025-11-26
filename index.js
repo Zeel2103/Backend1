@@ -87,6 +87,8 @@ async function startServer() {
                         { Subject: { $regex: searchTerm, $options: "i" } }, // Search in Subject field
                         { Location: { $regex: searchTerm, $options: "i" } }, // Search in Location field  
                         { Description: { $regex: searchTerm, $options: "i" } }, // Search in Description field
+                        { $expr: { $regexMatch: { input: { $toString: "$Price" }, regex: searchTerm } } }, // Search in Price field by converting to a string first
+                        { $expr: { $regexMatch: { input: { $toString: "$AvailableInventory" }, regex: searchTerm } } } // Search in AvailableInventory field by converting to a string first
                     ]
                 }).toArray();
 
