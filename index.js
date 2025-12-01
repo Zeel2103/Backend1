@@ -151,21 +151,26 @@ async function startServer() {
             }
         })
 
+        // PUT route to update a lesson by its ID
         app.put('/lessons/:id', async (req, res) => {
             try {
+
+                // Get the lesson's ID from the URL
                 const lessonId = req.params.id
 
-           
+                // The request body contains whichever fields the client wants to update
                 const updates = req.body
 
-                
+                // Build the MongoDB filter to find the lesson by its ObjectId
                 const filter = { _id: new ObjectId(lessonId) }
 
-                
+                // $set ensures only the provided fields are updated
                 const updateDoc = { $set: updates }
 
+                // Perform the update on the lessons collection
                 const result = await lessonsCol.updateOne(filter, updateDoc)
 
+                // If no document was matched, the lesson does not exist
                 if (result.matchedCount === 0) {
                     return res.status(404).json({
                         success: false,
@@ -173,6 +178,7 @@ async function startServer() {
                     })
                 }
 
+                // Success response after updating the lesson
                 res.json({
                     success: true,
                     message: 'Lesson updated successfully',
@@ -180,6 +186,7 @@ async function startServer() {
                 })
 
             } catch (err) {
+                // Log the error and return an internal server error response
                 console.error('PUT /lessons/:id error:', err)
                 res.status(500).json({
                     success: false,
