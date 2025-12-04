@@ -1,32 +1,88 @@
-This repository contains the backend API for the GeniusLab lessons booking application. It is built using Express.js and connected to MongoDB Atlas. The backend is deployed on Render.com.
+# **GeniusLab Backend API**
 
-Project Links
 
-Live Backend on Render (GET all lessons)
 
---> (https://backend1-so5u.onrender.com)
+## ℹ️ Overview
 
-Environment Setup
+This backend powers the **GeniusLab learning platform**, handling lesson retrieval, searching, ordering and inventory updates.  
+It is built with **Node.js**, **Express.js**, and **MongoDB Atlas** and deployed using **Render.com**.
 
-The backend uses environment variables stored in a .env file.
-For security reasons, the real .env is NOT included, but a template is provided.
+This project was developed for coursework to demonstrate full-stack development, API design, database operations and deployment.
 
-1️⃣ Create your .env file
 
-Run:
+## Usage
+
+Here are some example API interactions:
+
+### Fetch all lessons
+```bash
+GET https://backend1-so5u.onrender.com/lessons
 ```
+
+### Place an order
+```json
+POST /orders
+{
+  "name": "John Doe",
+  "phone": "07123456789",
+  "email": "john@example.com",
+  "address": "1 Example St, London",
+  "items": [
+    { "lessonId": "67900435d83fe0581136c758", "quantity": 1 }
+  ]
+}
+```
+
+### Search lessons
+```bash
+GET /lessons/search?query=math
+```
+
+
+
+## ⬇️ Installation (Local Setup)
+
+Clone the repository:
+
+```bash
+git clone <your-backend-repo-url>
+cd backend
+npm install
+```
+
+Create your `.env` file:
+
+```bash
 cp .env.example .env
 ```
 
-2️⃣ Fill in the MongoDB connection string
+Add your MongoDB URI and port:
 
-The .env.example contains a connection string:
-```
+```env
 MONGODB_URI=mongodb+srv://user:user123@cluster0.vw0fx.mongodb.net/?appName=Cluster0
-
 PORT=3000
 ```
 
+Start the server:
 
- 
+```bash
+node index.js
+```
+
+Visit:
+
+```bash
+http://localhost:3000/lessons
+```
+
+
+## 🌐 Deployment
+
+The backend is deployed on **Render.com**.
+
+Live URL for lessons:
+
+```bash
+https://backend1-so5u.onrender.com
+```
 
