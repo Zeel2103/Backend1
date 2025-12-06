@@ -45,8 +45,7 @@ GET /lessons/search?query=math
 Clone the repository:
 
 ```bash
-git clone <your-backend-repo-url>
-cd backend
+git clone https://github.com/Zeel2103/Backend1.git
 npm install
 ```
 
