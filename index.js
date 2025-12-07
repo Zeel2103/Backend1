@@ -155,7 +155,6 @@ async function startServer() {
         app.put('/lessons/:id', async (req, res) => {
             try {
 
-                // Get the lesson's ID from the URL
                 const lessonId = req.params.id
 
                 // The request body contains whichever fields the client wants to update
