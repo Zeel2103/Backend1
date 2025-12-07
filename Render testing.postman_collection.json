@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "71c52e57-8e4b-46df-a55f-b8364a458dac",
+		"name": "Render testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49897737"
+	},
+	"item": [
+		{
+			"name": "GET lessons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = bri",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons/search?query=bri",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "bri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = reading",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons/search?query=reading",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "reading"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort by Price and desc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons?sortBy=Price&order=desc",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "Price"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort by subject and desc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons?sortBy=Subject&order=desc",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "Subject"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Emma Landon\",\r\n  \"phone\": \"0733234556\",\r\n  \"email\": \"emma.landon@gmail.com\",\r\n  \"address\": \"7 Riverside Court, Bristol\",\r\n  \"items\": [\r\n    { \"lessonId\": \"6912136b24bd305ca16a00f3\", \"quantity\": 1 },\r\n    { \"lessonId\": \"6912136b24bd305ca16a00f0\", \"quantity\": 2 }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/orders",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post new order 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Nick Jonas\",\r\n  \"phone\": \"0123456781\",\r\n  \"email\": \"nick.jonas@gmail.com\",\r\n  \"address\": \"7 Iver Road, Liverpool\",\r\n  \"items\": [\r\n    { \"lessonId\": \"6912136b24bd305ca16a00f0\", \"quantity\": 2 }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/orders",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Comp Science lesson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"AvailableInventory\": 6\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons/6912136b24bd305ca16a00f8",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons",
+						"6912136b24bd305ca16a00f8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Music lesson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Location\": \"Glasgow\",\r\n  \"Price\": 8.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend1-so5u.onrender.com/lessons/6912136b24bd305ca16a00f3",
+					"protocol": "https",
+					"host": [
+						"backend1-so5u",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"lessons",
+						"6912136b24bd305ca16a00f3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

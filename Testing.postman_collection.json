@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "c1f24874-1c46-4d65-bc85-55d29d22df9d",
+		"name": "Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49897737"
+	},
+	"item": [
+		{
+			"name": "GET lessons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort lessons by location and ascending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons?sortBy=Location&order=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "Location"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort lessons by inventory and descending",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons?sortBy=AvailableInventory&order=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "AvailableInventory"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort by Price and desc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons?sortBy=Price&order=desc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "Price"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort by subject and asc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons?sortBy=Subject&order=asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "Subject"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = y",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons/search?query=y",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "y"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = sp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons/search?query=sp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "sp"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = bri",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons/search?query=bri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "bri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = liverpool",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons/search?query=liverpool",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "liverpool"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search query = geography",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/lessons/search?query=geography",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "geography"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New order 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Emily Carter\",\r\n  \"phone\": \"07123456701\",\r\n  \"email\": \"emily.carter@example.com\",\r\n  \"address\": \"12 Rosewood Lane, Birmingham, UK\",\r\n  \"items\": [\r\n    { \"lessonId\": \"6912136b24bd305ca16a00f1\", \"quantity\": 1 },\r\n    { \"lessonId\": \"6912136b24bd305ca16a00f4\", \"quantity\": 2 }\r\n  ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New order 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Ava Patel\",\r\n  \"phone\": \"07844332211\",\r\n  \"email\": \"ava.patel@example.com\",\r\n  \"address\": \"25 Maple Crescent, Bristol, UK\",\r\n  \"items\": [\r\n    { \"lessonId\": \"6912136b24bd305ca16a00ef\", \"quantity\": 1 }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update English lesson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"AvailableInventory\": 50,\r\n  \"Price\": 100\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lessons/6912136b24bd305ca16a00f1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"6912136b24bd305ca16a00f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Science lesson",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Location\": \"Cardiff\",\r\n  \"Price\": 40\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/lessons/6912136b24bd305ca16a00f4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lessons",
+						"6912136b24bd305ca16a00f4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
